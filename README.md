@@ -1,7 +1,9 @@
 # elastic-docker
-My Elastic stack setup using docker compose. Elasticsearch, Logstash, Kibana.
+Elasticsearch, Logstash, Kibana with sample data loaded from a local csv file using Logstash.
 
-### Version: 6.5.4
+### Version
+
+`6.5.4`
 
 ### Running
 
