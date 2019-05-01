@@ -3,4 +3,4 @@
 ## from https://github.com/elastic/logstash-docker/blob/master/build/logstash/config/logstash-oss.yml
 #
 http.host: "0.0.0.0"
-path.config: /Users/ben/Docker/docker-elk-master/logstash/pipeline
+#path.config: /Users/ben/Docker/docker-elk-master/logstash/pipeline
