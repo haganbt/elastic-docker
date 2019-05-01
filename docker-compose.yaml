@@ -39,13 +39,28 @@ services:
     build:
       context: kibana/
     volumes:
-      - ./kibana/config/:/usr/share/kibana/config:ro
+      - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
     ports:
       - "5601:5601"
     networks:
       - es_local_dev
     depends_on:
       - elasticsearch
+
+  filebeat:
+    container_name: filebeat
+    build:
+      context: filebeat/
+    command: --strict.perms=false -e  # -e flag to log to stderr and disable syslog/file output
+    # If the host system has logs at "/var/log", mount them at "/mnt/log"
+    # inside the container, where Filebeat can find them.
+    # volumes: ['/var/log:/mnt/log:ro']
+    volumes:
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./sample_data/elastic_blog_curated_access_logs:/usr/share/filebeat/logs:ro
+    networks:
+      - es_local_dev
+    depends_on: ['elasticsearch', 'kibana']
 
 networks:
   es_local_dev:
