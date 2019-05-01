@@ -7,7 +7,7 @@ services:
     build:
       context: elasticsearch/
     volumes:
-      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./elasticsearch/config/elasticsearch.yml:/Users/ben/VSCode/elastic-docker/elasticsearch/config/elasticsearch.yml:ro
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -21,8 +21,8 @@ services:
     build:
       context: logstash/
     volumes:
-      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./logstash/config/logstash.yml:/Users/ben/VSCode/elastic-docker/logstash/config/logstash.yml:ro
+      - ./logstash/pipeline:/Users/ben/VSCode/elastic-docker/logstash/pipeline:ro
     ports:
       - "5000:5000"
     environment:
