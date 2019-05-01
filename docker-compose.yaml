@@ -6,8 +6,9 @@ services:
     container_name: es_1
     build:
       context: elasticsearch/
-    #volumes:
-    #  - /Users/ben/VSCode/elastic-docker/elasticsearch/config/elasticsearch.yml:./elasticsearch/config/elasticsearch.yml:ro
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    # uncomment to persist ES data
     #  - esdata1:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
@@ -22,8 +23,8 @@ services:
     build:
       context: logstash/
     volumes:
-      - /Users/ben/VSCode/elastic-docker/logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
-      - /Users/ben/Downloads/Engineer2/datasets/blogs.csv:/usr/share/logstash/blogs.csv:ro
+      - ./logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+      - ./sample_data/blogs.csv:/usr/share/logstash/blogs.csv:ro
     ports:
       - "5000:5000"
     environment:
