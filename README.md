@@ -23,5 +23,3 @@ This will yield the following indices:
 * logs_server1
 * logs_server2
 * logs_server3
-
-WARNING: as default, no ES data is persisted. To persist data, uncomment the appropriate `volume` within `docker-compose.yaml`.
