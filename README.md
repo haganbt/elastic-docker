@@ -12,7 +12,7 @@ Elasticsearch, Logstash, Kibana, Filebeat.
 
 ### Sample Data
 
-Upon startup, the following tasks are performed (see the `./sample_data` folder):
+Upon startup, the following tasks are performed:
 
 * Filebeat will ingest all log data from `./sample_data/elastic_blog_curated_access_logs`
 * Logstash will import blog csv data from `./sample_data/blogs.csv`
