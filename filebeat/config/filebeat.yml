@@ -8,7 +8,7 @@ filebeat.prospectors:
 - type: log
   enabled: true
   paths:
-    - ./sample_data/elastic_blog_curated_access_logs
+    - /usr/share/filebeat/logs/*.log
 
 processors:
  - decode_json_fields:
@@ -22,7 +22,7 @@ processors:
 setup.template.enabled: false
 
 output.elasticsearch:
-  hosts: ["localhost:9200"]
+  hosts: ["elasticsearch:9200"]
   index: "logs_%{[host]}"
   document_type: "_doc"
   bulk_max_size: 1000

@@ -1,5 +1,5 @@
 # elastic-docker
-Elasticsearch, Logstash, Kibana with sample data loaded from a local csv file using Logstash.
+Elasticsearch, Logstash, Kibana, Filebeat.
 
 ### Version
 
@@ -9,4 +9,19 @@ Elasticsearch, Logstash, Kibana with sample data loaded from a local csv file us
 
 `docker-compose up`
 
-NOTE: as default, no ES data is persisted. To persist data, uncomment the appropriate `volume` within `docker-compose.yaml`.
+
+### Sample Data
+
+See the `./sample_data` folder. Upon startup:
+
+* Filebeat will ingest all log data from `./sample_data/elastic_blog_curated_access_logs`
+* Logstash will import blog csv data from `./sample_data/blogs.csv`
+
+This will yield the following indices:
+
+* blogs
+* logs_server1
+* logs_server2
+* logs_server3
+
+WARNING: as default, no ES data is persisted. To persist data, uncomment the appropriate `volume` within `docker-compose.yaml`.

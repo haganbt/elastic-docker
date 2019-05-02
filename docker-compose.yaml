@@ -60,7 +60,8 @@ services:
       - ./sample_data/elastic_blog_curated_access_logs:/usr/share/filebeat/logs:ro
     networks:
       - es_local_dev
-    depends_on: ['elasticsearch', 'kibana']
+    depends_on:
+      - elasticsearch
 
 networks:
   es_local_dev:
