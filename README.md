@@ -1,7 +1,7 @@
 # elastic-docker
 Elasticsearch, Logstash, Kibana, Filebeat.
 
-### Version
+### Elastic Version
 
 `6.5.4`
 
