@@ -9,7 +9,7 @@ services:
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     # comment/uncomment to persist ES data
-      - esdata1:/usr/share/elasticsearch/data
+      #- esdata1:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
