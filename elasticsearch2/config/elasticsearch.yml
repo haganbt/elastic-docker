@@ -5,7 +5,11 @@
 cluster.name: "docker-cluster"
 network.host: 0.0.0.0
 
-node.name: es_2
+node.name: data1
+
+node.master: true
+node.ingest: false
+node.data: true
 
 # minimum_master_nodes need to be explicitly set when bound on a public IP
 # set to 1 to allow single node clusters
