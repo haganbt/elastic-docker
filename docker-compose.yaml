@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   elasticsearch:
-    container_name: es_1
+    container_name: master
     build:
       context: elasticsearch/
     volumes:
@@ -17,6 +17,32 @@ services:
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
       - es_local_dev
+
+  elasticsearch2:
+    container_name: data1
+    build:
+      context: elasticsearch2/
+    volumes:
+      - ./elasticsearch2/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    environment:
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+    networks:
+      - es_local_dev
+    depends_on:
+      - elasticsearch
+
+  elasticsearch3:
+    container_name: data2
+    build:
+      context: elasticsearch3/
+    volumes:
+      - ./elasticsearch3/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    environment:
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+    networks:
+      - es_local_dev
+    depends_on:
+      - elasticsearch    
 
   logstash:
     container_name: logstash
