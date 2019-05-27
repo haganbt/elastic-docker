@@ -2,12 +2,12 @@ version: '3.5'
 
 services:
 
-  elasticsearch:
-    container_name: master
+  es1:
+    container_name: es1
     build:
-      context: elasticsearch/
+      context: es1/
     volumes:
-      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./es1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     # comment/uncomment to persist ES data
       #- esdata1:/usr/share/elasticsearch/data
     ports:
@@ -18,31 +18,44 @@ services:
     networks:
       - es_local_dev
 
-  elasticsearch2:
-    container_name: data1
+  es2:
+    container_name: es2
     build:
-      context: elasticsearch2/
+      context: es2/
     volumes:
-      - ./elasticsearch2/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./es2/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     environment:
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
       - es_local_dev
     depends_on:
-      - elasticsearch
+      - es1
 
-  elasticsearch3:
-    container_name: data2
+  es3:
+    container_name: es3
     build:
-      context: elasticsearch3/
+      context: es3/
     volumes:
-      - ./elasticsearch3/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./es3/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     environment:
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
       - es_local_dev
     depends_on:
-      - elasticsearch    
+      - es1
+
+  kibana:
+    container_name: kibana
+    build:
+      context: kibana/
+    volumes:
+      - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
+    ports:
+      - "5601:5601"
+    networks:
+      - es_local_dev
+    depends_on:
+      - es1
 
   logstash:
     container_name: logstash
@@ -58,20 +71,7 @@ services:
     networks:
       - es_local_dev
     depends_on:
-      - elasticsearch
-
-  kibana:
-    container_name: kibana
-    build:
-      context: kibana/
-    volumes:
-      - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
-    ports:
-      - "5601:5601"
-    networks:
-      - es_local_dev
-    depends_on:
-      - elasticsearch
+      - es1
 
   filebeat:
     container_name: filebeat
@@ -87,7 +87,7 @@ services:
     networks:
       - es_local_dev
     depends_on:
-      - elasticsearch
+      - es1
 
 networks:
   es_local_dev:

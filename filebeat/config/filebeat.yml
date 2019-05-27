@@ -22,7 +22,7 @@ processors:
 setup.template.enabled: false
 
 output.elasticsearch:
-  hosts: ["elasticsearch:9200"]
+  hosts: ["es1:9200"]
   index: "logs_%{[host]}"
   document_type: "_doc"
   bulk_max_size: 1000
