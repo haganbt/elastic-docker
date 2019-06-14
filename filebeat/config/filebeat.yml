@@ -4,9 +4,8 @@
 #  Extract the blog_access_logs.tar.gz file and set paths correctly          #
 ##############################################################################
 
-filebeat.prospectors:
+filebeat.inputs:
 - type: log
-  enabled: true
   paths:
     - /usr/share/filebeat/logs/*.log
 
@@ -23,6 +22,5 @@ setup.template.enabled: false
 
 output.elasticsearch:
   hosts: ["es1:9200"]
-  index: "logs_%{[host]}"
-  document_type: "_doc"
+  index: "%{[fields.log_type]}-%{[agent.version]}-%{+yyyy.MM.dd}"
   bulk_max_size: 1000

@@ -3,7 +3,7 @@
 
 ### Elastic Version
 
-`6.5.4`
+`7.1.1`
 
 ### Running
 
@@ -23,9 +23,3 @@ This will yield the following indices:
 * logs_server1
 * logs_server2
 * logs_server3
-
-### Architecture
-
-![alt text][architecture]
-
-[architecture]: ./docs/architecture-overview.png "Architecture Overview"
