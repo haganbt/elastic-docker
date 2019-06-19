@@ -22,5 +22,6 @@ setup.template.enabled: false
 
 output.elasticsearch:
   hosts: ["es1:9200"]
-  index: "%{[fields.log_type]}-%{[agent.version]}-%{+yyyy.MM.dd}"
+  #index: "%{[fields.log_type]}-%{[agent.version]}-%{+yyyy.MM.dd}"
+  index: "logs_%{[fields.host]}"
   bulk_max_size: 1000
