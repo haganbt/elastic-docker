@@ -1,5 +1,5 @@
 # elastic-docker
-3 node Elasticsearch cluster with Logstash, Kibana, Filebeat.
+2 node Elasticsearch cluster with Logstash, Kibana, Filebeat.
 
 ### Elastic Version
 

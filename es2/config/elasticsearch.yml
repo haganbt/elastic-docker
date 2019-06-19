@@ -11,15 +11,8 @@ node.name: es2
 #node.ingest: false
 #node.data: true
 
-node.attr.temp: hot
-node.attr.zone: 2
+#node.attr.temp: hot
+#node.attr.zone: 2
 
-# minimum_master_nodes need to be explicitly set when bound on a public IP
-# set to 1 to allow single node clusters
-# Details: https://github.com/elastic/elasticsearch/pull/17288
-#discovery.zen.minimum_master_nodes: 2
-
-# https://www.elastic.co/guide/en/elasticsearch/reference/6.4/modules-discovery-zen.html
 discovery.zen.ping.unicast.hosts: ["es1", "es2", "es3"]
-
 cluster.initial_master_nodes: ["es1", "es2", "es3"]
