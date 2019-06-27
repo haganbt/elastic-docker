@@ -31,18 +31,18 @@ services:
     depends_on:
       - es1
 
-  #es3:
-  #  container_name: es3
-  #  build:
-  #    context: es3/
-  #  volumes:
-  #    - ./es3/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-  #  environment:
-  #    ES_JAVA_OPTS: "-Xmx512m -Xms512m"
-  #  networks:
-  #    - es_local_dev
-  #  depends_on:
-  #    - es1
+  es3:
+    container_name: es3
+    build:
+      context: es3/
+    volumes:
+      - ./es3/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    environment:
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+    networks:
+      - es_local_dev
+    depends_on:
+      - es1
 
   kibana:
     container_name: kibana
