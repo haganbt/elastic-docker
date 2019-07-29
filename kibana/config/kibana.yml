@@ -5,4 +5,7 @@
 server.name: kibana
 server.host: "0"
 
+# Enable code beta
+xpack.code.ui.enabled: true
+
 elasticsearch.hosts: http://es1:9200
