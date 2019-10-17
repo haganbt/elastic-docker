@@ -3,7 +3,7 @@
 
 ### Elastic Version
 
-`7.3.0`
+`7.4.0`
 
 ### Running
 
